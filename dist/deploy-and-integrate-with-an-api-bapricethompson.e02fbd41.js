@@ -674,6 +674,7 @@ var prevRefreshSig = globalThis.$RefreshSig$;
 $parcel$ReactRefreshHelpers$3d99.prelude(module);
 
 try {
+//import './index.css';
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
@@ -683,7 +684,7 @@ const container = document.getElementById("app");
 const root = (0, _client.createRoot)(container);
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
     fileName: "index.js",
-    lineNumber: 6,
+    lineNumber: 7,
     columnNumber: 13
 }, undefined));
 
@@ -16092,8 +16093,100 @@ module.exports = require("b0f0e6b9e8349dac");
 })();
 
 },{"6f0162e9ab224cd4":"jMk1U"}],"96tIl":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$b29b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$b29b.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$b29b.prelude(module);
 
-},{}],"jnFvT":[function(require,module,exports,__globalThis) {
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _listing = require("./components/Listing");
+var _listingDefault = parcelHelpers.interopDefault(_listing);
+const App = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _listingDefault.default), {}, void 0, false, {
+            fileName: "App.jsx",
+            lineNumber: 6,
+            columnNumber: 13
+        }, undefined)
+    }, void 0, false, {
+        fileName: "App.jsx",
+        lineNumber: 5,
+        columnNumber: 9
+    }, undefined);
+};
+_c = App;
+exports.default = App;
+var _c;
+$RefreshReg$(_c, "App");
+
+  $parcel$ReactRefreshHelpers$b29b.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","./components/Listing":"kWPxN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"kWPxN":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$0f70 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$0f70.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$0f70.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _s = $RefreshSig$();
+const url = "https://sd-6310-2025-summer-express-app.onrender.com/api/fortune-cookie";
+const Listing = ()=>{
+    _s();
+    const [listings, setListings] = (0, _react.useState)([]);
+    const [isLoading, setIsLoading] = (0, _react.useState)(true);
+    const [error, setError] = (0, _react.useState)(null);
+    const searchInputRef = (0, _react.useRef)(null);
+    const [searchTerm, setSearchTerm] = (0, _react.useState)('');
+    (0, _react.useEffect)(()=>{
+        fetch(url).then((response)=>response.json()).then((data)=>{
+            console.log(data);
+            setListings(data);
+            setIsLoading(false);
+        }).catch((error)=>{
+            console.error("error", error);
+            setError(err.message);
+            setIsLoading(false);
+        });
+    }, []);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            children: listings.message
+        }, void 0, false, {
+            fileName: "components/Listing.jsx",
+            lineNumber: 26,
+            columnNumber: 13
+        }, undefined)
+    }, void 0, false, {
+        fileName: "components/Listing.jsx",
+        lineNumber: 25,
+        columnNumber: 9
+    }, undefined);
+};
+_s(Listing, "VNZ3PQHHMcY+H3VRf3JFtTJ8oFU=");
+_c = Listing;
+exports.default = Listing;
+var _c;
+$RefreshReg$(_c, "Listing");
+
+  $parcel$ReactRefreshHelpers$0f70.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"jnFvT":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a

@@ -16139,6 +16139,7 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _listingCss = require("./Listing.css");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
@@ -16173,52 +16174,62 @@ const Listing = ()=>{
                 children: "Listings"
             }, void 0, false, {
                 fileName: "components/Listing.jsx",
-                lineNumber: 33,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                type: "text",
-                ref: searchInputRef,
-                placeholder: "Search listings",
-                onChange: (e)=>setSearchTerm(e.target.value)
-            }, void 0, false, {
-                fileName: "components/Listing.jsx",
                 lineNumber: 34,
                 columnNumber: 13
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: handleClearSearch,
-                children: "Clear"
-            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                id: "searchDiv",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        ref: searchInputRef,
+                        placeholder: "Search listings",
+                        onChange: (e)=>setSearchTerm(e.target.value)
+                    }, void 0, false, {
+                        fileName: "components/Listing.jsx",
+                        lineNumber: 36,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        id: "clearButton",
+                        onClick: handleClearSearch,
+                        children: "Clear"
+                    }, void 0, false, {
+                        fileName: "components/Listing.jsx",
+                        lineNumber: 42,
+                        columnNumber: 13
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "components/Listing.jsx",
-                lineNumber: 40,
+                lineNumber: 35,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: listings.message
             }, void 0, false, {
                 fileName: "components/Listing.jsx",
-                lineNumber: 41,
+                lineNumber: 44,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: listings.fortune
             }, void 0, false, {
                 fileName: "components/Listing.jsx",
-                lineNumber: 42,
+                lineNumber: 45,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: listings.luckNumber
             }, void 0, false, {
                 fileName: "components/Listing.jsx",
-                lineNumber: 43,
+                lineNumber: 46,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "components/Listing.jsx",
-        lineNumber: 32,
+        lineNumber: 33,
         columnNumber: 9
     }, undefined);
 };
@@ -16233,7 +16244,7 @@ $RefreshReg$(_c, "Listing");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"jnFvT":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./Listing.css":"4kcqt"}],"jnFvT":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -18541,6 +18552,6 @@ function $da9882e673ac146b$var$ErrorOverlay() {
     return null;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["kxwl6","jOXmm"], "jOXmm", "parcelRequire94c2", {}, null, null, "http://localhost:1234")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"4kcqt":[function() {},{}]},["kxwl6","jOXmm"], "jOXmm", "parcelRequire94c2", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=deploy-and-integrate-with-an-api-bapricethompson.e02fbd41.js.map

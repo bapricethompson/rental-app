@@ -1,4 +1,5 @@
 
+import './Listing.css';
 import React, { useState, useEffect, useRef } from 'react';
 const url="https://sd-6310-2025-summer-express-app.onrender.com/api/fortune-cookie"
 const Listing =()=>{
@@ -31,13 +32,15 @@ const Listing =()=>{
     return(
         <div>  
             <h1>Listings</h1>
-            <input
+            <div id="searchDiv">
+                <input
                 type="text"
                 ref={searchInputRef}
                 placeholder="Search listings"
                 onChange={e => setSearchTerm(e.target.value)}
             />
-            <button onClick={handleClearSearch}>Clear</button>
+            <button id="clearButton" onClick={handleClearSearch}>Clear</button>
+            </div>
             <p>{listings.message}</p>
             <p>{listings.fortune}</p>
             <p>{listings.luckNumber}</p>

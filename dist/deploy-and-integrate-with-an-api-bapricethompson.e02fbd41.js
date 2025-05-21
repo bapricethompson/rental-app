@@ -16150,6 +16150,7 @@ const Listing = ()=>{
     const [error, setError] = (0, _react.useState)(null);
     const searchInputRef = (0, _react.useRef)(null);
     const [searchTerm, setSearchTerm] = (0, _react.useState)('');
+    //runs only on mount
     (0, _react.useEffect)(()=>{
         fetch(url).then((response)=>response.json()).then((data)=>{
             console.log(data);
@@ -16161,17 +16162,63 @@ const Listing = ()=>{
             setIsLoading(false);
         });
     }, []);
+    const handleClearSearch = ()=>{
+        setSearchTerm('');
+        searchInputRef.current.value = "";
+        searchInputRef.current.focus(); //put the cursor back into the search bar
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-            children: listings.message
-        }, void 0, false, {
-            fileName: "components/Listing.jsx",
-            lineNumber: 26,
-            columnNumber: 13
-        }, undefined)
-    }, void 0, false, {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                children: "Listings"
+            }, void 0, false, {
+                fileName: "components/Listing.jsx",
+                lineNumber: 33,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                type: "text",
+                ref: searchInputRef,
+                placeholder: "Search listings",
+                onChange: (e)=>setSearchTerm(e.target.value)
+            }, void 0, false, {
+                fileName: "components/Listing.jsx",
+                lineNumber: 34,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: handleClearSearch,
+                children: "Clear"
+            }, void 0, false, {
+                fileName: "components/Listing.jsx",
+                lineNumber: 40,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: listings.message
+            }, void 0, false, {
+                fileName: "components/Listing.jsx",
+                lineNumber: 41,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: listings.fortune
+            }, void 0, false, {
+                fileName: "components/Listing.jsx",
+                lineNumber: 42,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: listings.luckNumber
+            }, void 0, false, {
+                fileName: "components/Listing.jsx",
+                lineNumber: 43,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "components/Listing.jsx",
-        lineNumber: 25,
+        lineNumber: 32,
         columnNumber: 9
     }, undefined);
 };

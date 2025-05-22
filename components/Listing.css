@@ -1,5 +1,8 @@
+#main{
+    text-align:center;
+}
 input[type=text] {
-    width: 85%;
+    width: 73%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -14,12 +17,33 @@ input[type=text] {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    padding: 12px 20px; /* same as input */
+    padding: 12px 20px; 
     margin: 8px 0;
     font-size: 16px;
     border-radius:2px;
     cursor:pointer;
     
+}
+
+#searchButton{
+    background-color: #04AA6D; 
+    border: none;
+    color: white;
+    width:12%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 12px 20px; 
+    margin: 8px 0;
+    font-size: 16px;
+    border-radius:2px;
+    cursor:pointer;
+    
+}
+
+#searchButton:hover{
+    background-color: #21dc98; 
+
 }
 
 #clearButton:hover{
@@ -34,3 +58,4 @@ input[type=text] {
     display:flex;
     justify-content: space-between;
 }
+

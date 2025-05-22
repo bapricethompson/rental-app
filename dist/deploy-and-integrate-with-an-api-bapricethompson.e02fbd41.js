@@ -16140,35 +16140,52 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _listingCss = require("./Listing.css");
+var _listingCard = require("./ListingCard");
+var _listingCardDefault = parcelHelpers.interopDefault(_listingCard);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
-const url = "https://sd-6310-2025-summer-express-app.onrender.com/api/fortune-cookie";
+const url = "https://sd-6310-2025-summer-express-app.onrender.com/listings";
 const Listing = ()=>{
     _s();
     const [listings, setListings] = (0, _react.useState)([]);
     const [isLoading, setIsLoading] = (0, _react.useState)(true);
     const [error, setError] = (0, _react.useState)(null);
-    const searchInputRef = (0, _react.useRef)(null);
-    const [searchTerm, setSearchTerm] = (0, _react.useState)('');
+    const listingSectionRef = (0, _react.useRef)(null);
     //runs only on mount
     (0, _react.useEffect)(()=>{
         fetch(url).then((response)=>response.json()).then((data)=>{
             console.log(data);
             setListings(data);
             setIsLoading(false);
+            if (listingSectionRef.current) listingSectionRef.current.scrollIntoView({
+                behavior: 'smooth'
+            });
         }).catch((error)=>{
             console.error("error", error);
-            setError(err.message);
+            setError(error.message);
             setIsLoading(false);
         });
     }, []);
-    const handleClearSearch = ()=>{
-        setSearchTerm('');
-        searchInputRef.current.value = "";
-        searchInputRef.current.focus(); //put the cursor back into the search bar
-    };
+    if (isLoading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: "Loading..."
+    }, void 0, false, {
+        fileName: "components/Listing.jsx",
+        lineNumber: 30,
+        columnNumber: 27
+    }, undefined);
+    if (error) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            "Error: ",
+            error
+        ]
+    }, void 0, true, {
+        fileName: "components/Listing.jsx",
+        lineNumber: 31,
+        columnNumber: 23
+    }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        id: "main",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                 children: "Listings"
@@ -16178,52 +16195,18 @@ const Listing = ()=>{
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                id: "searchDiv",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text",
-                        ref: searchInputRef,
-                        placeholder: "Search listings",
-                        onChange: (e)=>setSearchTerm(e.target.value)
-                    }, void 0, false, {
-                        fileName: "components/Listing.jsx",
-                        lineNumber: 36,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        id: "clearButton",
-                        onClick: handleClearSearch,
-                        children: "Clear"
-                    }, void 0, false, {
-                        fileName: "components/Listing.jsx",
-                        lineNumber: 42,
-                        columnNumber: 13
-                    }, undefined)
-                ]
-            }, void 0, true, {
+                id: "listingSection",
+                ref: listingSectionRef,
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _listingCardDefault.default), {
+                    listings: listings
+                }, void 0, false, {
+                    fileName: "components/Listing.jsx",
+                    lineNumber: 36,
+                    columnNumber: 17
+                }, undefined)
+            }, void 0, false, {
                 fileName: "components/Listing.jsx",
                 lineNumber: 35,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: listings.message
-            }, void 0, false, {
-                fileName: "components/Listing.jsx",
-                lineNumber: 44,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: listings.fortune
-            }, void 0, false, {
-                fileName: "components/Listing.jsx",
-                lineNumber: 45,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: listings.luckNumber
-            }, void 0, false, {
-                fileName: "components/Listing.jsx",
-                lineNumber: 46,
                 columnNumber: 13
             }, undefined)
         ]
@@ -16233,7 +16216,7 @@ const Listing = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(Listing, "VNZ3PQHHMcY+H3VRf3JFtTJ8oFU=");
+_s(Listing, "hTjtwUfAooRQHpCA/eNrZxhxZB0=");
 _c = Listing;
 exports.default = Listing;
 var _c;
@@ -16244,7 +16227,7 @@ $RefreshReg$(_c, "Listing");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./Listing.css":"4kcqt"}],"jnFvT":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","./Listing.css":"4kcqt","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./ListingCard":"n0RNE"}],"4kcqt":[function() {},{}],"jnFvT":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -18552,6 +18535,74 @@ function $da9882e673ac146b$var$ErrorOverlay() {
     return null;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"4kcqt":[function() {},{}]},["kxwl6","jOXmm"], "jOXmm", "parcelRequire94c2", {}, null, null, "http://localhost:1234")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"n0RNE":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$e2be = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$e2be.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$e2be.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _listingCardCss = require("./ListingCard.css");
+const ListingCard = ({ listings = [] })=>{
+    console.log(listings);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            id: "listingSection",
+            children: listings.map((listing, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "card",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                            children: listing.title
+                        }, void 0, false, {
+                            fileName: "components/ListingCard.jsx",
+                            lineNumber: 9,
+                            columnNumber: 13
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                            children: listing.price
+                        }, void 0, false, {
+                            fileName: "components/ListingCard.jsx",
+                            lineNumber: 10,
+                            columnNumber: 13
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                            children: listing.description
+                        }, void 0, false, {
+                            fileName: "components/ListingCard.jsx",
+                            lineNumber: 11,
+                            columnNumber: 13
+                        }, undefined)
+                    ]
+                }, index, true, {
+                    fileName: "components/ListingCard.jsx",
+                    lineNumber: 8,
+                    columnNumber: 11
+                }, undefined))
+        }, void 0, false, {
+            fileName: "components/ListingCard.jsx",
+            lineNumber: 6,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "components/ListingCard.jsx",
+        lineNumber: 5,
+        columnNumber: 5
+    }, undefined);
+};
+_c = ListingCard;
+exports.default = ListingCard;
+var _c;
+$RefreshReg$(_c, "ListingCard");
+
+  $parcel$ReactRefreshHelpers$e2be.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./ListingCard.css":"aMuOW"}],"aMuOW":[function() {},{}]},["kxwl6","jOXmm"], "jOXmm", "parcelRequire94c2", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=deploy-and-integrate-with-an-api-bapricethompson.e02fbd41.js.map

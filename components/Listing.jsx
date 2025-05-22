@@ -1,13 +1,13 @@
 
 import './Listing.css';
+import ListingCard from './ListingCard';
 import React, { useState, useEffect, useRef } from 'react';
-const url="https://sd-6310-2025-summer-express-app.onrender.com/api/fortune-cookie"
+const url="https://sd-6310-2025-summer-express-app.onrender.com/listings"
 const Listing =()=>{
     const [listings, setListings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const searchInputRef = useRef(null);
-    const [searchTerm, setSearchTerm] = useState('');
+    const listingSectionRef = useRef(null);
     //runs only on mount
     useEffect(() => {
         fetch(url)
@@ -16,34 +16,25 @@ const Listing =()=>{
             console.log(data);
             setListings(data);
             setIsLoading(false);
+            if (listingSectionRef.current) {
+                    listingSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+                }
+            
         })
         .catch((error) => {
             console.error("error", error);
-            setError(err.message);
+            setError(error.message);
             setIsLoading(false);
         });
     }, []);
-    const handleClearSearch=()=>{
-        setSearchTerm('');
-        searchInputRef.current.value="";
-        searchInputRef.current.focus(); //put the cursor back into the search bar
-
-    }
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error}</div>;
     return(
-        <div>  
+        <div id="main">  
             <h1>Listings</h1>
-            <div id="searchDiv">
-                <input
-                type="text"
-                ref={searchInputRef}
-                placeholder="Search listings"
-                onChange={e => setSearchTerm(e.target.value)}
-            />
-            <button id="clearButton" onClick={handleClearSearch}>Clear</button>
+            <div id="listingSection" ref={listingSectionRef}>
+                <ListingCard listings={listings} />
             </div>
-            <p>{listings.message}</p>
-            <p>{listings.fortune}</p>
-            <p>{listings.luckNumber}</p>
         </div>
     )
 

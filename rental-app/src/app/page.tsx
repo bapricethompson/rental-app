@@ -9,7 +9,7 @@ import { josefinSans } from "@/app/ui/fonts";
 
 export default function Home() {
   return (
-    <main className="w-full text-center">
+    <main className="w-full">
       <div className="flex mx-auto items-center  my-[30px]">
         <div className="w-[52%]">
           <div className="w-[85%] mx-auto">
@@ -26,7 +26,7 @@ export default function Home() {
               don’t need to own everything to experience everything. The
               outdoors belong to all of us.
             </p>
-            <div>
+            <div className="flex justify-start w-fit">
               <GoButton
                 type=""
                 href="/listings"

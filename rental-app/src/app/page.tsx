@@ -10,7 +10,7 @@ import { josefinSans } from "@/app/ui/fonts";
 export default function Home() {
   return (
     <main className="w-full text-center">
-      <div className="flex mx-auto  my-[30px]">
+      <div className="flex mx-auto items-center  my-[30px]">
         <div className="w-[52%]">
           <div className="w-[85%] mx-auto">
             {" "}

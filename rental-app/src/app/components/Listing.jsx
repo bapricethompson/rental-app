@@ -30,8 +30,7 @@ const Listing =()=>{
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
     return(
-        <div className="w-[90%] mx-auto ">  
-            <h1>Listings</h1>
+        <div>  
             <div className="" ref={listingSectionRef}>
                 <ListingCard listings={listings} />
             </div>

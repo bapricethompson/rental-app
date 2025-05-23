@@ -1,10 +1,6 @@
 "use client";
-import Image from "next/image";
-import kayak from "./img/kayak.png";
-import ski from "./img/ski.png";
-import surf from "./img/surfer.png";
-import back from "./img/backpacking.png";
 import GoButton from "./components/GoButton";
+import OffsetImages from "./components/OffsetImages";
 import { josefinSans } from "@/app/ui/fonts";
 
 export default function Home() {
@@ -40,28 +36,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-[38%]">
-          <div className="flex space-between gap-[30px]">
-            <Image
-              src={ski}
-              alt="Kayaking"
-              height={344}
-              width={273}
-              className=""
-            />
-            <Image src={surf} alt="Kayaking" height={344} width={273} />
-          </div>
-          <div className="flex space-between gap-[5%] mt-[30px] ">
-            <Image
-              src={kayak}
-              alt="Kayaking"
-              height={344}
-              width={273}
-              className=""
-            />
-            <Image src={back} alt="Kayaking" height={344} width={273} />
-          </div>
-        </div>
+        <OffsetImages></OffsetImages>
       </div>
     </main>
   );

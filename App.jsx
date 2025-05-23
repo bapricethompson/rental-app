@@ -1,4 +1,4 @@
-import Listing from "./components/Listing";
+import Listing from "./rental-app/src/app/components/Listing";
 
 const App = () => {
     return (

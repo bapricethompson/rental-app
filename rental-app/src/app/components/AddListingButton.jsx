@@ -21,3 +21,5 @@ const AddListingButton = ({ children, type, onClick, href })=> {
     </div>
   );
 }
+
+export default AddListingButton;

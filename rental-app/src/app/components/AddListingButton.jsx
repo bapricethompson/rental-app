@@ -11,7 +11,7 @@ const AddListingButton = ({ children, type, onClick, href, className = ""  })=> 
         onClick();
         if (href) router.push(href);
       }}
-      className={`px-7 py-3 bg-mainBlue text-white md:block w-fit rounded-[10px] m-auto cursor-pointer ${
+      className={`px-7 py-3 my-[30px] bg-mainBlue text-white md:block w-fit rounded-[10px] m-auto cursor-pointer ${
         clicked ? "bg-primary" : "bg-primary hover:bg-primaryLight"
       } ${className}`}
     >

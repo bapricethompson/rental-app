@@ -15,6 +15,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Add Google Material Icons link here */}
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+      </head>
       <body className={`${barlow} antialiased`}>
         <Nav />
         <main>{children}</main>

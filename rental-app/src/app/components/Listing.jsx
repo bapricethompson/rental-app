@@ -30,9 +30,9 @@ const Listing =()=>{
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
     return(
-        <div id="main">  
+        <div className="w-[90%] mx-auto ">  
             <h1>Listings</h1>
-            <div className="flex justify-between flex-wrap w-[90%] mx-auto mt-[30px]" ref={listingSectionRef}>
+            <div className="" ref={listingSectionRef}>
                 <ListingCard listings={listings} />
             </div>
         </div>

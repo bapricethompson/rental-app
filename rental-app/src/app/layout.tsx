@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import {barlow} from "@/app/ui/fonts";
+import Nav from "./components/Nav";
+import { barlow } from "@/app/ui/fonts";
 import "./globals.css";
-
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,10 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${barlow} ${barlow} antialiased`}
-      >
-        {children}
+      <body className={`${barlow} antialiased`}>
+        <Nav />
+        <main>{children}</main>
       </body>
     </html>
   );

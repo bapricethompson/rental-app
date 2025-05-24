@@ -7,7 +7,7 @@ const FAQ = () => {
     {
       question: "How does gear rental work?",
       answer:
-        "Browse available listings near your destination, request the gear you want, arrange a pick-up or delivery, and return it when you are done. It's that simple.",
+        "Browse available listings near your destination, request the gear you want, arrange a pick-up or delivery, and return it when you are done. It is that simple.",
     },
     {
       question: "Who can rent gear?",
@@ -27,17 +27,22 @@ const FAQ = () => {
     {
       question: "How much does it cost?",
       answer:
+        "Prices are set by the gear owners. You will see the cost per day, any deposit or cleaning fees, and discounts for multi-day rentals.",
+    },
+    {
+      question: "What happens if the gear is damaged or lost?",
+      answer:
         "We have a damage protection policy in place. Minor wear and tear is expected, but renters are responsible for significant damage, loss, or theft. Additional coverage options may be available at checkout.",
     },
     {
       question: "Can I list my own gear?",
       answer:
-        "Absolutely! If you have well-maintained gear sitting unused, you can earn extra income by listing it on our platform. We'll guide you through the process, from photos to pricing.",
+        "Absolutely! If you have well-maintained gear sitting unused, you can earn extra income by listing it on our platform. We will guide you through the process, from photos to pricing.",
     },
     {
       question: "Do you offer guided experiences?",
       answer:
-        "Not yet—but we're working on it! We're planning to offer bundled experiences like guided hikes, tours, or classes in the future.",
+        "Not yet—but we are working on it! We are planning to offer bundled experiences like guided hikes, tours, or classes in the future.",
     },
   ];
 

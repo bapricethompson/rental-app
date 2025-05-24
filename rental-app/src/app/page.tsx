@@ -24,7 +24,6 @@ export default function Home() {
             </p>
             <div className="flex justify-start w-fit">
               <GoButton
-                type=""
                 href="/listings"
                 onClick={() => {
                   console.log("hi");

@@ -25,7 +25,6 @@ const About = () => {
             price tag or the hassle.
           </p>
           <GoButton
-            type=""
             href="/listings"
             onClick={() => {
               console.log("hi");

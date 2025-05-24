@@ -46,7 +46,6 @@ const FAQ = () => {
     },
   ];
 
-  const [showFaqs, setShowFaqs] = useState(true);
   return (
     <div className="py-[40px]">
       <h1 className="text-3xl font-bold mb-6 text-center">

@@ -24,7 +24,7 @@ const SearchBar = () => {
           arrow_drop_down
         </span>
       </div>
-      <button className="border-none bg-transparent text-xl cursor-pointer py-1.5 mx-4">
+      <button className=" flex items-center border-none bg-transparent text-xl cursor-pointer py-1.5 mx-4">
         <span
           className="material-icons"
           style={{

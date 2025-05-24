@@ -3,27 +3,26 @@ import { josefinSans } from "@/app/ui/fonts";
 import Image from "next/image";
 import paddle from "../img/paddleboard.png";
 import GoButton from "../components/GoButton";
+
 const About = () => {
   return (
     <div>
       <div className="flex w-[80%] mx-auto justify-between items-center my-[30px]">
         <div>
           <h1 className={`${josefinSans} text-5xl text-left`}>
-            {" "}
             Experience More. Pay Less.
           </h1>
 
           <p className={`${josefinSans} text-md text-left my-[20px] w-[80%]`}>
-            {" "}
             We are on a mission to help people experience more without paying
             more.
           </p>
           <p className={`${josefinSans} text-md text-left my-[20px] w-[80%]`}>
             Our platform connects outdoor lovers with affordable recreational
             gear—from kayaks and paddleboards to tents, skis, and more. Whether
-            you're planning a spontaneous weekend getaway or your next big trip,
-            we make it easy to find the gear you need—without the high price tag
-            or the hassle.
+            you are planning a spontaneous weekend getaway or your next big
+            trip, we make it easy to find the gear you need—without the high
+            price tag or the hassle.
           </p>
           <GoButton
             type=""
@@ -87,8 +86,8 @@ const About = () => {
         <div>
           <h3 className="text-3xl font-bold mb-4">Got Gear? List It!</h3>
           <p className={`${josefinSans} text-md text-left my-[20px] w-[80%]`}>
-            Have outdoor gear you’re not using every day? You can earn extra
-            income by renting it out on our platform. Whether it’s a
+            Have outdoor gear you are not using every day? You can earn extra
+            income by renting it out on our platform. Whether it is a
             paddleboard, tent, or hiking pack, your gear could help someone else
             enjoy their next adventure—and put money back in your pocket.
           </p>
@@ -98,7 +97,7 @@ const About = () => {
           </p>
           <p className={`${josefinSans} text-md text-left my-[20px] w-[80%]`}>
             Join our growing community of adventurers and gear sharers.
-            Together, we’re making the outdoors more affordable, more
+            Together, we are making the outdoors more affordable, more
             accessible, and more sustainable—for everyone.
           </p>
         </div>

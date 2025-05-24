@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-const GoButton = ({ children, type, onClick, href })=> {
+const GoButton = ({ children, type, onClick, href, className = "" })=> {
   const [clicked, setClicked] = useState(false);
   const router = useRouter();
   return (
@@ -14,7 +14,7 @@ const GoButton = ({ children, type, onClick, href })=> {
         clicked
           ? "bg-primary"
           : "bg-primary hover:bg-primaryLight"
-      }`}
+      } ${className}`}
     >
       {children}
     </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import { barlow } from "@/app/ui/fonts";
 import "./globals.css";
 
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={`${barlow} antialiased`}>
         <Nav />
         <main>{children}</main>
+        <Footer></Footer>
       </body>
     </html>
   );

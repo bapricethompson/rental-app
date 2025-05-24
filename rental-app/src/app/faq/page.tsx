@@ -1,6 +1,5 @@
 "use client";
 import FaqList from "../components/FaqList";
-import { useState } from "react";
 
 const FAQ = () => {
   const faqs = [

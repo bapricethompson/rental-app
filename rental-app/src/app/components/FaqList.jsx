@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const FaqList = ({ questions = [] }) => {
+const FaqList = ({ questions}) => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleAnswer = (index) => {

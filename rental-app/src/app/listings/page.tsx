@@ -11,7 +11,7 @@ const ListingPage = () => {
         <SearchBar></SearchBar>
         <AddListingButton
           className="mr-0"
-          href="/singleListing"
+          href="/createListing"
           onClick={() => {
             console.log("hi");
           }}

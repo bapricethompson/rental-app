@@ -15,7 +15,7 @@ const ListingCard = ({ listings = [] }) => {
   };
 
   const handleClick = (id) => {
-    router.push(`/listings/${id}`);
+    router.push(`/singleListing?listingId=${id}`);
   };
 
   return (

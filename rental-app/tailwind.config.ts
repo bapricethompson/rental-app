@@ -13,6 +13,8 @@ export default {
         foreground: "var(--foreground)",
         card: "#D6CFC7",
         mainBlue: "#457B9D",
+        mainBlueLight:"#A3C4D6",
+        mainBlueDark: "#2C5873",
         lightGrey: "#F1F4F6",
       },
     },

@@ -2,7 +2,7 @@
 "use client"; 
 import ListingCard from './ListingCard';
 import React, { useState, useEffect, useRef } from 'react';
-const url="https://sd-6310-2025-summer-express-app.onrender.com/listings"
+const url="https://sd-6310-2025-summer-express-app.onrender.com/gear"
 const Listing =()=>{
     const [listings, setListings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);

@@ -49,9 +49,10 @@ export default function CreateListing() {
           }),
         });
 
-        const newUser: { id: number } = await createUserRes.json();
-        console.log("HER1", newUser);
-        ownerId = newUser.id;
+        console.log(createUserRes);
+        const newUser = await createUserRes.json();
+        console.log("HER1", newUser[0]);
+        ownerId = newUser[0].id;
       }
 
       // Post the gear listing
@@ -73,6 +74,7 @@ export default function CreateListing() {
 
       if (gearRes.ok) {
         alert("Gear listing submitted!");
+        window.location.href = "/listings";
         setFormData({
           ownerName: "",
           ownerEmail: "",

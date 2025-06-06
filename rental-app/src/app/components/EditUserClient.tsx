@@ -88,7 +88,7 @@ export default function EditListingClient() {
   }
 
   return (
-    <main className="w-[90%] max-w-2xl mx-auto mt-20">
+    <main className="w-[90%] max-w-2xl mx-auto mt-20 mb-60">
       <h1 className="text-5xl font-bold mb-6 text-center">Edit User</h1>
       <form
         onSubmit={handleSubmit}

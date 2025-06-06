@@ -9,6 +9,7 @@ export default function BookingCalendar({ gearId }) {
   useEffect(() => {
     async function fetchBookings() {
       try {
+        //HANDLE NULL
         const res = await fetch(`https://sd-6310-2025-summer-express-app.onrender.com/gearBookings/${gearId}`);
         if (!res.ok) throw new Error(`Failed to fetch bookings: ${res.status}`);
         const bookings = await res.json();

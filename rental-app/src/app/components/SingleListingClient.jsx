@@ -56,16 +56,17 @@ const handleDelete = async () => {
         return res.json();
       })
       .then((data) => {
-        if (!data.length) throw new Error("Gear not found");
-        setListing(data[0]);
-        return fetch(`https://sd-6310-2025-summer-express-app.onrender.com/gearUsers/${data[0].owner_id}`);
+        console.log(data.owner_id);
+        setListing(data);
+        return fetch(`https://sd-6310-2025-summer-express-app.onrender.com/gearUsers/${data.owner_id}`);
       })
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch user");
         return res.json();
       })
       .then((userData) => {
-        setUser(userData[0]);
+        console.log("user", userData)
+        setUser(userData);
         setLoading(false);
       })
       .catch((err) => {
@@ -88,7 +89,7 @@ const handleDelete = async () => {
     <div className="absolute top-2 right-2 flex space-x-2">
       <button
         onClick={handleEdit}
-        className="text-gray-600 hover:text-blue-500"
+        className="text-S hover:text-blue-500"
         title="Edit"
       >
         <span className="material-icons">edit</span>
@@ -104,11 +105,11 @@ const handleDelete = async () => {
   </div>
   <div className="p-6">
     <h1 className="text-3xl font-bold mb-2">{listing.title}</h1>
-    {user && <p className="text-gray-600 mb-2">Host: {user.name}</p>}
-    <p className="text-gray-700">{listing.description}</p>
+    {user && <p className="text-black mb-2">Host: {user.name}</p>}
+    <p className="text-black">{listing.description}</p>
     <p className="font-semibold text-lg mt-4">
       ${listing.price_per_day}{" "}
-      <span className="text-gray-500">/ day</span>
+      <span className="text-black">/ day</span>
     </p>
   </div>
 </div>

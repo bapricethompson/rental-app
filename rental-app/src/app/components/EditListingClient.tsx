@@ -50,15 +50,16 @@ export default function EditListingClient() {
         const gearRes = await fetch(`${url}gear/${listingId}`);
         if (!gearRes.ok) throw new Error("Failed to fetch gear");
         const gearData = await gearRes.json();
-        if (!gearData.length) throw new Error("Gear not found");
+        console.log(gearData);
 
-        const listingData = gearData[0];
+        const listingData = gearData;
         setListing(listingData);
 
         const userRes = await fetch(`${url}gearUsers/${listingData.owner_id}`);
         if (!userRes.ok) throw new Error("Failed to fetch user");
         const userData = await userRes.json();
-        const userD = userData[0];
+        console.log(userData.email);
+        const userD = userData;
         setFormData({
           ownerName: userD?.name || "",
           ownerEmail: userD?.email || "",

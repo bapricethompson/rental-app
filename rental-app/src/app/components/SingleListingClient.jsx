@@ -21,6 +21,7 @@ const handleDelete = async () => {
   if (!confirmDelete) return;
 
   try {
+    console.log(listing.id)
     const res = await fetch(`https://sd-6310-2025-summer-express-app.onrender.com/gear/${listing.id}`, {
       method: "DELETE",
     });

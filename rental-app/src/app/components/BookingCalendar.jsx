@@ -16,14 +16,16 @@ export default function BookingCalendar({ gearId }) {
         console.log("hi", bookings);
         const allBookedDates = [];
 
-        bookings.forEach((booking) => {
-          const start = new Date(booking.start_date);
-          const end = new Date(booking.end_date);
+        if (Array.isArray(bookings)) {
+  bookings.forEach((booking) => {
+    const start = new Date(booking.start_date);
+    const end = new Date(booking.end_date);
 
-          for (let date = new Date(start); date <= end; date.setUTCDate(date.getUTCDate() + 1)) {
-            allBookedDates.push(new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate())));
-          }
-        });
+    for (let date = new Date(start); date <= end; date.setUTCDate(date.getUTCDate() + 1)) {
+      allBookedDates.push(new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate())));
+    }
+  });
+}
 
         setBookedDates(allBookedDates);
       } catch (error) {

@@ -79,7 +79,7 @@ export default function UsersPage() {
             key={user.id}
             className="border p-4 rounded shadow-sm bg-white text-black"
           >
-            <div className="mr-0 flex space-x-2">
+            <div className="mr-0 w-full flex justify-end space-x-2">
               <button
                 onClick={() => handleEdit(user.id, user.name, user.email)}
                 className="text-gray-600 hover:text-blue-500"

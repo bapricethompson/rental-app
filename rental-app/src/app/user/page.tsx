@@ -32,9 +32,11 @@ export default function UsersPage() {
     getUsers();
   }, []);
 
-  const handleEdit = (userId: number) => {
+  const handleEdit = (userId: number, userName: string, userEmail: string) => {
     console.log(userId);
-    window.location.href = `/editUser?user=${userId}`;
+    window.location.href = `/editUser?user=${userId}&name=${encodeURIComponent(
+      userName
+    )}&email=${encodeURIComponent(userEmail)}`;
   };
 
   const handleDelete = async (userId: number) => {
@@ -79,7 +81,7 @@ export default function UsersPage() {
           >
             <div className="mr-0 flex space-x-2">
               <button
-                onClick={() => handleEdit(user.id)}
+                onClick={() => handleEdit(user.id, user.name, user.email)}
                 className="text-gray-600 hover:text-blue-500"
                 title="Edit"
               >

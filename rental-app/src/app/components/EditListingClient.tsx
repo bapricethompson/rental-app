@@ -103,25 +103,73 @@ export default function EditListingClient() {
       return;
     }
 
-    try {
-      const gearPayload = {
-        title: formData.title,
-        description: formData.description,
-        price_per_day: parseFloat(formData.price),
-        city: formData.city,
-        state: formData.state,
-        zip: formData.zip,
-        owner_id: listing.owner_id,
-      };
+    const parsedPrice = parseFloat(formData.price);
+    const priceToCompare = isNaN(parsedPrice)
+      ? listing.price_per_day
+      : parsedPrice;
 
+    const normalize = (value: string | number | null | undefined) =>
+      value == null ? "" : String(value).trim();
+
+    const titleChanged = normalize(formData.title) !== normalize(listing.title);
+    const descriptionChanged =
+      normalize(formData.description) !== normalize(listing.description);
+    const priceChanged = priceToCompare !== listing.price_per_day;
+    const cityChanged = normalize(formData.city) !== normalize(listing.city);
+    const stateChanged = normalize(formData.state) !== normalize(listing.state);
+    const zipChanged = normalize(formData.zip) !== normalize(listing.zip);
+
+    const onlyTitleDescPriceChanged =
+      (titleChanged || descriptionChanged || priceChanged) &&
+      !cityChanged &&
+      !stateChanged &&
+      !zipChanged;
+
+    let method = "PUT";
+    let gearPayload: Partial<Listing> = {
+      title: formData.title,
+      description: formData.description,
+      price_per_day: priceToCompare,
+      city: formData.city,
+      state: formData.state,
+      zip: formData.zip,
+      owner_id: listing.owner_id,
+    };
+
+    if (onlyTitleDescPriceChanged) {
+      method = "PATCH";
+      console.log("patching");
+      gearPayload = {};
+      if (titleChanged) gearPayload.title = formData.title;
+      if (descriptionChanged) gearPayload.description = formData.description;
+      if (priceChanged) gearPayload.price_per_day = priceToCompare;
+    }
+
+    console.log({
+      titleChanged,
+      descriptionChanged,
+      priceChanged,
+      cityChanged,
+      stateChanged,
+      zipChanged,
+      onlyTitleDescPriceChanged,
+      method,
+      gearPayload,
+      formData,
+      listing,
+    });
+
+    try {
+      console.log("Submitting with method:", method);
       const gearRes = await fetch(`${url}gear/${listing.id}`, {
-        method: "PUT",
+        method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(gearPayload),
       });
 
       if (gearRes.ok) {
         alert("Gear listing updated!");
+        window.location.href = "/listings";
       } else {
         const errorText = await gearRes.text();
         alert(`Failed to update gear listing. ${errorText}`);

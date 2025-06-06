@@ -1,8 +1,29 @@
 "use client";
-import { useState } from "react";
 
-export default function CreateListing() {
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+
+interface Listing {
+  id: string;
+  title: string;
+  description: string;
+  price_per_day: number;
+  city: string;
+  state: string;
+  zip: string;
+  owner_id: string;
+}
+
+export default function EditListingClient() {
+  const searchParams = useSearchParams();
+  const listingId = searchParams.get("listing");
   const url = "https://sd-6310-2025-summer-express-app.onrender.com/";
+
+  const [listing, setListing] = useState<Listing | null>(null);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const [formData, setFormData] = useState({
     ownerName: "",
     ownerEmail: "",
@@ -13,6 +34,57 @@ export default function CreateListing() {
     state: "",
     zip: "",
   });
+
+  useEffect(() => {
+    if (!listingId) {
+      setError("No listingId provided");
+      setLoading(false);
+      return;
+    }
+
+    async function fetchData() {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const gearRes = await fetch(`${url}gear/${listingId}`);
+        if (!gearRes.ok) throw new Error("Failed to fetch gear");
+        const gearData = await gearRes.json();
+        if (!gearData.length) throw new Error("Gear not found");
+
+        const listingData = gearData[0];
+        setListing(listingData);
+
+        const userRes = await fetch(`${url}gearUsers/${listingData.owner_id}`);
+        if (!userRes.ok) throw new Error("Failed to fetch user");
+        const userData = await userRes.json();
+        const userD = userData[0];
+        setFormData({
+          ownerName: userD?.name || "",
+          ownerEmail: userD?.email || "",
+          title: listingData.title || "",
+          description: listingData.description || "",
+          price: listingData.price_per_day
+            ? listingData.price_per_day.toString()
+            : "",
+          city: listingData.city || "",
+          state: listingData.state || "",
+          zip: listingData.zip || "",
+        });
+
+        setLoading(false);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Unknown error");
+        }
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, [listingId]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -26,35 +98,12 @@ export default function CreateListing() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!listing) {
+      alert("Listing data is missing, cannot submit.");
+      return;
+    }
+
     try {
-      const usersRes = await fetch(`${url}gearUsers`);
-      const users: { id: number; email: string; name: string }[] =
-        await usersRes.json();
-      const existingUser = users.find(
-        (user: { email: string }) => user.email === formData.ownerEmail
-      );
-      console.log("HER2");
-      let ownerId: number;
-
-      if (existingUser) {
-        ownerId = existingUser.id;
-      } else {
-        // Create the user
-        const createUserRes = await fetch(`${url}gearUsers`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.ownerName,
-            email: formData.ownerEmail,
-          }),
-        });
-
-        const newUser: { id: number } = await createUserRes.json();
-        console.log("HER1", newUser);
-        ownerId = newUser.id;
-      }
-
-      // Post the gear listing
       const gearPayload = {
         title: formData.title,
         description: formData.description,
@@ -62,29 +111,20 @@ export default function CreateListing() {
         city: formData.city,
         state: formData.state,
         zip: formData.zip,
-        owner_id: ownerId,
+        owner_id: listing.owner_id,
       };
-      console.log(gearPayload);
-      const gearRes = await fetch(`${url}gear`, {
-        method: "POST",
+
+      const gearRes = await fetch(`${url}gear/${listing.id}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(gearPayload),
       });
 
       if (gearRes.ok) {
-        alert("Gear listing submitted!");
-        setFormData({
-          ownerName: "",
-          ownerEmail: "",
-          title: "",
-          description: "",
-          price: "",
-          city: "",
-          state: "",
-          zip: "",
-        });
+        alert("Gear listing updated!");
       } else {
-        alert("Failed to post gear listing.");
+        const errorText = await gearRes.text();
+        alert(`Failed to update gear listing. ${errorText}`);
       }
     } catch (err) {
       console.error("Error submitting listing:", err);
@@ -92,23 +132,35 @@ export default function CreateListing() {
     }
   };
 
+  type FormField = [string, string, string, boolean];
+
+  const formFields: FormField[] = [
+    ["ownerName", "Owner Name", "text", true],
+    ["ownerEmail", "Owner Email", "email", true],
+    ["title", "Listing Title", "text", false],
+    ["description", "Description", "textarea", false],
+    ["price", "Price Per Day ($)", "number", false],
+    ["city", "City", "text", false],
+    ["state", "State", "dropdown", false],
+    ["zip", "ZIP Code", "text", false],
+  ];
+
+  if (loading) {
+    return <p className="text-center mt-20">Loading...</p>;
+  }
+
+  if (error) {
+    return <p className="text-center mt-20 text-red-600">Error: {error}</p>;
+  }
+
   return (
     <main className="w-[90%] max-w-2xl mx-auto mt-20">
-      <h1 className="text-5xl font-bold mb-6 text-center">List Your Gear!</h1>
+      <h1 className="text-5xl font-bold mb-6 text-center">Edit Your Gear</h1>
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-2xl rounded-xl p-6 space-y-4"
       >
-        {[
-          ["ownerName", "Owner Name", "text"],
-          ["ownerEmail", "Owner Email", "email"],
-          ["title", "Listing Title", "text"],
-          ["description", "Description", "textarea"],
-          ["price", "Price Per Day ($)", "number"],
-          ["city", "City", "text"],
-          ["state", "State", "dropdown"],
-          ["zip", "ZIP Code", "text"],
-        ].map(([name, label, type]) => (
+        {formFields.map(([name, label, type, readOnly]) => (
           <div key={name}>
             <label className="block text-left font-semibold mb-1">
               {label}
@@ -121,6 +173,7 @@ export default function CreateListing() {
                 rows={4}
                 className="w-full border rounded-md p-2"
                 required
+                readOnly={readOnly}
               />
             ) : type === "dropdown" ? (
               <select
@@ -129,6 +182,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 className="w-full border rounded-md p-2"
                 required
+                disabled={readOnly}
               >
                 <option value="">Select State</option>
                 {[
@@ -194,8 +248,11 @@ export default function CreateListing() {
                 name={name}
                 value={formData[name as keyof typeof formData]}
                 onChange={handleChange}
-                className="w-full border rounded-md p-2"
+                className={`w-full border rounded-md p-2 ${
+                  readOnly ? "bg-gray-100 cursor-not-allowed" : ""
+                }`}
                 required
+                readOnly={readOnly}
               />
             )}
           </div>
@@ -205,7 +262,7 @@ export default function CreateListing() {
           type="submit"
           className="w-full bg-mainBlue hover:bg-mainBlueDark text-white font-semibold py-2 rounded-md mt-4"
         >
-          Submit Listing
+          Save Listing
         </button>
       </form>
     </main>

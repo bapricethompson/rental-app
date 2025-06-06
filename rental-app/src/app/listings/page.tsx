@@ -6,7 +6,7 @@ import { josefinSans } from "@/app/ui/fonts";
 const ListingPage = () => {
   return (
     <main className="w-full text-center">
-      <h1 className={`${josefinSans} text-4xl my-[30px]`}>Find Your Gear</h1>
+      <h1 className={`${josefinSans} text-4xl my-[40px]`}>Find Your Gear</h1>
       <div className="w-[90%] my-[30px] mx-auto">
         <SearchBar></SearchBar>
         <AddListingButton

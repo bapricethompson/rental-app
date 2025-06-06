@@ -1,19 +1,19 @@
 const SearchBar = () => {
   return (
-    <div className="flex w-[90%] mx-auto items-center border border-gray-300 rounded-lg p-1 bg-white h-12">
+    <div className="flex w-[90%] mx-auto  items-center border border-gray-300 rounded-lg p-1 bg-white h-12">
       <input
         type="text"
         placeholder="Item"
-        className="flex-1 h-full border-r outline-none border-gray-300 hover:bg-gray-100 p-1.5 text-sm"
+        className="flex-1 h-full border-r outline-none border-gray-300 hover:bg-gray-100 p-1.5 text-sm placeholder:text-black"
       />
       <input
         type="text"
         placeholder="Location"
-        className="flex-1 h-full border-r outline-none border-gray-300 hover:bg-gray-100 p-1.5 text-sm"
+        className="flex-1 h-full border-r outline-none border-gray-300 hover:bg-gray-100 p-1.5 text-sm placeholder:text-black"
       />
       <div className="relative h-full">
         <select
-          className="h-full w-[140px] border-r border-gray-300 hover:bg-gray-100 p-1.5 pr-10 outline-none text-sm bg-white appearance-none cursor-pointer"
+          className="h-full w-[140px] border-r border-gray-300 hover:bg-gray-100 p-1.5 pr-10 outline-none text-sm bg-white appearance-none cursor-pointer placeholder:text-black"
         >
           <option>Dates</option>
         </select>

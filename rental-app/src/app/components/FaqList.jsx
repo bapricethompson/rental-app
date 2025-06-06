@@ -31,7 +31,7 @@ const FaqList = ({ questions}) => {
                 </span>
               </button>
               {isOpen && (
-                <p className="mt-2 text-gray-700 transition duration-300 ease-in-out">
+                <p className="mt-2 text-black transition duration-300 ease-in-out">
                   {q.answer}
                 </p>
               )}

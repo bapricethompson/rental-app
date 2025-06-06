@@ -29,6 +29,7 @@ export default function Nav() {
           <Link href="/listings" className="hover:underline">Listings</Link>
           <Link href="/about" className="hover:underline">About</Link>
           <Link href="/faq" className="hover:underline">FAQ</Link>
+          <Link href="/user" className="hover:underline">Manage</Link>
         </div>
       </div>
 

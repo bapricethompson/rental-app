@@ -1,4 +1,3 @@
-"use client";
 import Listing from "../components/Listing";
 import SearchBar from "../components/SearchBar";
 import AddListingButton from "../components/AddListingButton";
@@ -9,14 +8,7 @@ const ListingPage = () => {
       <h1 className={`${josefinSans} text-4xl my-[40px]`}>Find Your Gear</h1>
       <div className="w-[90%] my-[30px] mx-auto">
         <SearchBar></SearchBar>
-        <AddListingButton
-          className="mr-0"
-          href="/createListing"
-          onClick={() => {
-            console.log("hi");
-          }}
-        >
-          {" "}
+        <AddListingButton className="mr-0" href="/createListing">
           Add Item
         </AddListingButton>
         <Listing></Listing>

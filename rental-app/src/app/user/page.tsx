@@ -73,7 +73,7 @@ export default function UsersPage() {
       {loading && <p className="text-center">Loading...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}
 
-      <ul className="w-[90%] max-w-3xl mx-auto space-y-4">
+      <ul data-testid="ul" className="w-[90%] max-w-3xl mx-auto space-y-4">
         {users.map((user) => (
           <li
             key={user.id}

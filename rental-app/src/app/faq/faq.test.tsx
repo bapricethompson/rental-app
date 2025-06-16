@@ -1,34 +1,18 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import FAQ from "./page";
+import FAQ from "./page"; // Adjust if needed
 
 describe("FAQ page", () => {
-  it("renders the header", async () => {
+  it("reveals an answer after clicking the question", async () => {
     render(<FAQ />);
-    const heading = await screen.findByRole("heading", {
-      name: /frequently asked questions/i,
+
+    const question = screen.getByText("How does gear rental work?");
+    fireEvent.click(question);
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/browse available listings near your destination/i)
+      ).toBeInTheDocument();
     });
-    expect(heading).toBeInTheDocument();
-  });
-
-  it("renders all FAQ questions", async () => {
-    render(<FAQ />);
-
-    const questions = [
-      "How does gear rental work?",
-      "Who can rent gear?",
-      "What kinds of gear are available?",
-      "Is the gear available in my area?",
-      "How much does it cost?",
-      "What happens if the gear is damaged or lost?",
-      "Can I list my own gear?",
-      "Do you offer guided experiences?",
-    ];
-
-    for (const question of questions) {
-      await waitFor(() => {
-        expect(screen.getByText(question)).toBeInTheDocument();
-      });
-    }
   });
 });

@@ -1,17 +1,17 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import FAQ from "./page";
 
 describe("FAQ page", () => {
-  it("renders the header", () => {
+  it("renders the header", async () => {
     render(<FAQ />);
-    const heading = screen.getByRole("heading", {
+    const heading = await screen.findByRole("heading", {
       name: /frequently asked questions/i,
     });
     expect(heading).toBeInTheDocument();
   });
 
-  it("renders all FAQ questions", () => {
+  it("renders all FAQ questions", async () => {
     render(<FAQ />);
 
     const questions = [
@@ -25,9 +25,10 @@ describe("FAQ page", () => {
       "Do you offer guided experiences?",
     ];
 
-    questions.forEach((question) => {
-      const questionElement = screen.getByText(question);
-      expect(questionElement).toBeInTheDocument();
-    });
+    for (const question of questions) {
+      await waitFor(() => {
+        expect(screen.getByText(question)).toBeInTheDocument();
+      });
+    }
   });
 });

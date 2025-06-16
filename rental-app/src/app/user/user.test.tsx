@@ -3,15 +3,15 @@ import "@testing-library/jest-dom";
 import UsersPage from "./page";
 
 describe("Users page", () => {
-  it("returns correct heading", () => {
+  it("returns correct heading", async () => {
     render(<UsersPage />);
-    const heading = screen.queryByText("Manage Users");
+    const heading = await screen.queryByText("Manage Users");
     expect(heading).toBeInTheDocument();
   });
 
-  it("gets ul", () => {
+  it("gets ul", async () => {
     render(<UsersPage />);
-    const testId = screen.getByTestId("ul");
+    const testId = await screen.getByTestId("ul");
     expect(testId).toBeInTheDocument();
   });
 });
